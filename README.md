@@ -1,0 +1,1 @@
+## End to End Human Activity Recognition Project
