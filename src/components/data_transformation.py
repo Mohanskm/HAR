@@ -41,7 +41,7 @@ class DataTransformation:
 
             # Create pipeline for feature selection (RFE)
             estimator = RandomForestClassifier()
-            k=200
+            k=100
             rfe_selector_pipeline = RFE(estimator,n_features_to_select=k)
             # rfe_selector_pipeline = Pipeline([
             #     ("estimator", estimator),  # You can use any estimator here
