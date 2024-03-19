@@ -3,6 +3,11 @@ import pandas as pd
 from src.exception import CustomException
 from src.utils import load_object
 import os
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+import io
+from PIL import Image
 
 
 class PredictPipeline:
@@ -72,6 +77,30 @@ class PredictPipeline:
             raise CustomException(e,sys)
 
 
+    def predict_and_save(self, csv_file_path):
+        try:
+            custom_data = CustomData(csv_file_path)
+            data_frame = custom_data.get_data_as_data_frame()
+            predictions = self.predict(data_frame)
+            predictions_df = pd.DataFrame(predictions, columns=['Predictions'])
+            output_df = pd.concat([data_frame, predictions_df], axis=1)
+            # Convert DataFrame to CSV string
+            csv_string = output_df.to_csv(index=False)
+             # Save the CSV string to a file
+            csv_filename = 'predictions.csv'
+            with open(csv_filename, 'w') as csv_file:
+                csv_file.write(csv_string)
+            # Save the image of the pie chart
+            image = custom_data.plot_pie_chart(predictions)
+            # image_filename = 'pie_chart.png'
+            # image.save(image_filename)
+            # Return the CSV string and predictions for handling in the route
+            return image
+        except Exception as e:
+            raise CustomException(e, sys)
+
+            
+
 
 class CustomData:
     def __init__(self, csv_file_path):
@@ -83,10 +112,35 @@ class CustomData:
             return df
         except Exception as e:
             raise CustomException(e, sys)
+    
+    def plot_pie_chart(self, y_pred_labels):
+        label_counts = pd.Series(y_pred_labels).value_counts()
+        plt.figure(figsize=(6, 6))
+        plt.pie(label_counts, labels=label_counts.index, autopct='%1.1f%%', startangle=140)
+        plt.title('Predicted Activity Distribution')
+        plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
         
+        # Save the plot to an image buffer
+        img_buffer = io.BytesIO()
+        plt.savefig(img_buffer, format='png')
+        plt.close()  # Close the figure to release memory
+        
+        # Create a PIL image object from the byte buffer
+        img_buffer.seek(0)
+        pil_image = Image.open(img_buffer)
+        pie = pil_image.show()
+        return pie
+        # # Save the plot to an image file
+        # img_file = 'pie_chart.png'
+        # plt.savefig(img_file)
+        # plt.close()  # Close the figure to release memory
+        
+        # return img_file
 # if __name__=="__main__":
 
-#     custom_data = CustomData(csv_file_path="One_point.csv")
-#     data_frame = custom_data.get_data_as_data_frame()
+#     # custom_data = CustomData(csv_file_path="One_point.csv")
+#     # data_frame = custom_data.get_data_as_data_frame()
 #     obj=PredictPipeline()
-#     print(obj.predict(data_frame))
+#     image_path = obj.predict_and_save("new_test.csv")
+#     pie = image_path.show()
+#     print(pie)
