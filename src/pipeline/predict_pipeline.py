@@ -128,8 +128,8 @@ class CustomData:
         # Create a PIL image object from the byte buffer
         img_buffer.seek(0)
         pil_image = Image.open(img_buffer)
-        pie = pil_image.show()
-        return pie
+        # pie = pil_image.show()
+        return pil_image
         # # Save the plot to an image file
         # img_file = 'pie_chart.png'
         # plt.savefig(img_file)
