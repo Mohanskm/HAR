@@ -4,43 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Activity Recognition</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            text-align: center; /* Aligning the link to the center */
-        }
-        h1 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-        p {
-            margin-bottom: 20px;
-            color: #666;
-        }
-        a {
-            color: #007bff; /* Link color */
-            text-decoration: none; /* Remove underline */
-        }
-        a:hover {
-            text-decoration: underline; /* Add underline on hover */
-        }
-    </style>
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+    
+    
     <div class="container">
-        <h1>Welcome to the Human Activity Recognition Project</h1>
+        <h1>
+            <span>Welcome</span>
+            <span>to</span>
+            <span>the</span>
+            <span>Human</span>
+            <span>Activity</span>
+            <span>Recognition</span>
+            <span>Project</span>
+        </h1>
         <p>This project aims to predict human activities based on sensor data.</p>
         <p>To make accurate predictions, it utilizes advanced machine learning algorithms.</p>
         <p>Supported activities include: Standing, Sitting, Laying, Walking Downstairs, Walking Upstairs, and Walking.</p>
@@ -48,5 +26,26 @@
         <p>Click <a href="/predictdata">here</a> to predict human activities.</p>
         <p>Click <a href="/predict_and_save">here</a> to predict and save human activities.</p>
     </div>
+    <div id="particles-js"></div>
+
+    <script src=
+        "particles.js-master/particles.js">
+    </script>
+    <script src="../particles.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const spans = document.querySelectorAll("h1 span");
+            let delay = 1000;
+            spans.forEach(span => {
+                setTimeout(() => {
+                    span.style.opacity = 1;
+                }, delay);
+                delay += 200; // Adjust the delay between each word or letter
+            });
+        });
+        
+    </script>
 </body>
 </html>
