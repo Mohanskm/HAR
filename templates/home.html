@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activity Recognition App</title>
+    <title>Human Activity Recognition App</title>
 
-    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
 
 </head>
 <body>
     <div id="particles-js">
     <div class="container">
-        <h1>Human Activity Recognition</h1>
+        <h1><span style="margin-left: 120px;">SensorSavvy</span></h1>
         <form action="{{ url_for('predict_datapoint')}}" method="post" enctype="multipart/form-data" class="form">
             <div class="form-group" id="drop-zone">
-                <label for="file" class="form-label">Drag and drop a CSV file here <br> or <br> Click to select</label>
-                <input type="file" name="file" id="file" class="form-control" accept=".csv" style="display: none;">
+                <label for="file" class="form-label"> <br> Click to select CSV file </label>
+                <input type="file" name="file" id="file" class="form-control" accept=".csv" style="display: none;" onchange="updateLabel(this)">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Predict Activity</button>
@@ -31,22 +31,36 @@
                 <strong>Prediction:</strong> {{ results }}
             </div>
         {% endif %}
-        {% if mapped_image %}
-            <div class="output-image">
-                <img src="{{ mapped_image }}" alt="Mapped Image">
-            </div>
-    {% endif %}
+        <div id="image" style={{backgroundImage: "url_for"}}>
 
+        </div>
     </div>
     </div>
+    
 
-    <script src=
-        "particles.js-master/particles.js">
-    </script>
-    <script src="../particles.js"></script>
-    <script src="js/app.js"></script>
+    <script type="application/javascript" src="{{url_for('static', filename='js/particles.js')}}"></script>
+    <script type="application/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
 
     <script>
+        const mapimage = {
+            Standing:{{url_for('static', filename='images/standing.jpeg')}},
+            Sitting:{{url_for('static', filename='images/sitting.jpeg')}},
+            Laying:{{url_for('static', filename='images/sitting.jpeg')}},
+            Walking_downstairs:{{url_for('static', filename='images/standing.jpeg')}},
+            Walking_upstairs:{{url_for('static', filename='images/standing.jpeg')}},
+            Walking:{{url_for('static', filename='images/sitting.jpeg')}}
+        }
+        function changeBackgroundImage(result) {
+            const imageDiv = document.getElementById('image');
+            if (result in mapimage) {
+                imageDiv.style.backgroundImage = url({{url_for('static', filename='images/standing.jpeg')}});
+            } else {
+                // Default background if result is not in mapimage
+                imageDiv.style.backgroundImage = 'url(sitting.jpeg)';
+            }
+        }
+        console.log(results)
+        changeBackgroundImage(results);
         const dropZone = document.getElementById('drop-zone');
 
         dropZone.addEventListener('dragover', (e) => {
@@ -72,11 +86,9 @@
             handleFile(file);
         });
 
-        function handleFile(file) {
-            // Do something with the file, e.g., display its name
-            console.log('Selected file:', file.name);
-        }
 
+
+            
     </script>
 </body>
 </html>

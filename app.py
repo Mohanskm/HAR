@@ -2,9 +2,9 @@ from flask import Flask, request, render_template
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 import os
 
-application = Flask(__name__)
+app = Flask(__name__,static_url_path='/static')
 
-app = application
+
 
 # Route for the home page
 @app.route('/')
@@ -37,9 +37,9 @@ def predict_datapoint():
 
         # Perform prediction
         predict_pipeline = PredictPipeline()
-        results = predict_pipeline.predict(data_frame)
+        results, img = predict_pipeline.predict(data_frame)
 
-        return render_template('home.html', results=results[0])
+        return render_template('home.html', results=results[0], image=img[0])
     
 
 # Route for uploading and predicting multiple data points

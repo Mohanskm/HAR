@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Activity Recognition</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     
@@ -13,26 +13,23 @@
         <h1>
             <span>Welcome</span>
             <span>to</span>
-            <span>the</span>
-            <span>Human</span>
-            <span>Activity</span>
-            <span>Recognition</span>
-            <span>Project</span>
+            <span>"SensorSavvy:</span>
+            <span>Envisioning </span>
+            <span>Human </span>
+            <span>Activity!"</span>
         </h1>
-        <p>This project aims to predict human activities based on sensor data.</p>
-        <p>To make accurate predictions, it utilizes advanced machine learning algorithms.</p>
-        <p>Supported activities include: Standing, Sitting, Laying, Walking Downstairs, Walking Upstairs, and Walking.</p>
-        <p>Feel free to explore the project and discover its capabilities!</p>
-        <p>Click <a href="/predictdata">here</a> to predict human activities.</p>
-        <p>Click <a href="/predict_and_save">here</a> to predict and save human activities.</p>
+        <p>Welcome to "SensorSavvy: Envisioning Human Activity!"</p>
+    <p>Embark on a journey to decode human behavior through sensor data!</p>
+    <p>Our cutting-edge project employs state-of-the-art machine learning marvels to predict human activities.</p>
+    <p>Supported activities include: Standing, Sitting, Laying, Walking Downstairs, Walking Upstairs, and Walking.</p>
+    <p>Ready to unravel the mysteries? Click <a href="/predictdata">here</a> to predict a single data point of human activity.</p>
+    <p>Or elevate your exploration! Click <a href="/predict_and_save">here</a> to predict, save, and visualize multiple data points.</p>
     </div>
     <div id="particles-js"></div>
 
-    <script src=
-        "particles.js-master/particles.js">
-    </script>
-    <script src="../particles.js"></script>
-    <script src="js/app.js"></script>
+    <script type="application/javascript" src="{{url_for('static', filename='js/particles.js')}}"></script>
+    <script type="application/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
+    
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

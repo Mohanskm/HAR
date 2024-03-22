@@ -60,9 +60,18 @@ class PredictPipeline:
                 4: 'Walking_upstairs',
                 5: 'Walking'
             }
+            image = {
+                'Standing':'images/standing.jpeg',
+                'Sitting':'images/standing.jpeg',
+                'Laying':'images/standing.jpeg',
+                'Walking_downstairs':'images/standing.jpeg',
+                'Walking_upstairs':'images/standing.jpeg',
+                'Walking':'images/standing.jpeg'
+            }
             preds=model.predict(data_scaled)
             mapped_preds = [activity_labels[pred] for pred in preds]
-            return mapped_preds
+            mapped_image = [image[i] for i in mapped_preds]
+            return mapped_preds, mapped_image
         
             # for _, row in data_scaled.iterrows():
             #         preds_list=[]
@@ -128,8 +137,8 @@ class CustomData:
         # Create a PIL image object from the byte buffer
         img_buffer.seek(0)
         pil_image = Image.open(img_buffer)
-        # pie = pil_image.show()
-        return pil_image
+        pie = pil_image.show()
+        return pie
         # # Save the plot to an image file
         # img_file = 'pie_chart.png'
         # plt.savefig(img_file)
