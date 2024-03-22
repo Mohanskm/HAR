@@ -11,6 +11,13 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
+function updateLabel(input) {
+  const fileName = input.files[0].name;
+  const label = input.parentElement.querySelector('label');
+  label.textContent = `Selected File: ${fileName}` ;
+}
+
+
 particlesJS('particles-js',
   
   {
