@@ -11,7 +11,7 @@
 <body>
     <div id="particles-js">
     <div class="container">
-        <h1><span style="margin-left: 120px;">SensorSavvy</span></h1>
+        <h1>SensorSavvy</h1>
         <form action="{{ url_for('predict_datapoint')}}" method="post" enctype="multipart/form-data" class="form">
             <div class="form-group" id="drop-zone">
                 <label for="file" class="form-label"> <br> Click to select CSV file </label>
@@ -31,9 +31,9 @@
                 <strong>Prediction:</strong> {{ results }}
             </div>
         {% endif %}
-        <div id="image" style={{backgroundImage: "url_for"}}>
-
-        </div>
+        {% if results == "Standing" %}
+            <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/standing.jpeg') }}');"></div>
+        {% endif %}
     </div>
     </div>
     
@@ -42,27 +42,7 @@
     <script type="application/javascript" src="{{url_for('static', filename='js/app.js')}}"></script>
 
     <script>
-        const mapimage = {
-            Standing:{{url_for('static', filename='images/standing.jpeg')}},
-            Sitting:{{url_for('static', filename='images/sitting.jpeg')}},
-            Laying:{{url_for('static', filename='images/sitting.jpeg')}},
-            Walking_downstairs:{{url_for('static', filename='images/standing.jpeg')}},
-            Walking_upstairs:{{url_for('static', filename='images/standing.jpeg')}},
-            Walking:{{url_for('static', filename='images/sitting.jpeg')}}
-        }
-        function changeBackgroundImage(result) {
-            const imageDiv = document.getElementById('image');
-            if (result in mapimage) {
-                imageDiv.style.backgroundImage = url({{url_for('static', filename='images/standing.jpeg')}});
-            } else {
-                // Default background if result is not in mapimage
-                imageDiv.style.backgroundImage = 'url(sitting.jpeg)';
-            }
-        }
-        console.log(results)
-        changeBackgroundImage(results);
         const dropZone = document.getElementById('drop-zone');
-
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
             dropZone.classList.add('dragover');

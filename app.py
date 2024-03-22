@@ -39,9 +39,9 @@ def predict_datapoint():
 
         # Perform prediction
         predict_pipeline = PredictPipeline()
-        results, img = predict_pipeline.predict(data_frame)
+        results= predict_pipeline.predict(data_frame)
 
-        return render_template('home.html', results=results[0], image=img[0])
+        return render_template('home.html', results=results[0])
     
 
 # Route for uploading and predicting multiple data points
