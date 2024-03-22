@@ -11,7 +11,7 @@
 <body>
     <div id="particles-js">
     <div class="container">
-        <h1><span style="margin-left: 120px;">SensorSavvy</span></h1>
+        <h1>SensorSavvy</h1>
         <form action="{{ url_for('predict_datapoint')}}" method="post" enctype="multipart/form-data" class="form">
             <div class="form-group" id="drop-zone">
                 <label for="file" class="form-label"> <br> Click to select CSV file </label>
@@ -31,9 +31,9 @@
                 <strong>Prediction:</strong> {{ results }}
             </div>
         {% endif %}
-        <div id="image" style = {{ background: url({images }) }}>
-
-        </div>
+        {% if results == "Standing" %}
+            <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/standing.jpeg') }}');"></div>
+        {% endif %}
     </div>
     </div>
     
