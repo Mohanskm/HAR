@@ -61,12 +61,10 @@ class PredictPipeline:
                 5: 'Walking'
             }
             image = {
-                'Standing':'images/standing.jpeg',
-                'Sitting':'images/standing.jpeg',
-                'Laying':'images/standing.jpeg',
-                'Walking_downstairs':'images/standing.jpeg',
-                'Walking_upstairs':'images/standing.jpeg',
-                'Walking':'images/standing.jpeg'
+                'Standing':"{{url_for('static', filename='images/standing.jpeg')}}",
+                'Sitting':"{{url_for('static', filename='images/sitting.jpeg')}}",
+                # 'Laying':"{{url_for('static', filename='images/')}}",
+                
             }
             preds=model.predict(data_scaled)
             mapped_preds = [activity_labels[pred] for pred in preds]
