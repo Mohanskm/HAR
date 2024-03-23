@@ -14,13 +14,16 @@
      align-items: center;
  }
 
+.img-container{
+    height: 200px;
+    width: 200px;
+}
 .backgroundimage {
         object-fit: contain;
-        height: 150px;
-        width: 150px;
+        height: 100%;
+        width: 100%;
         border-radius: 5px;
-
-    }
+}
 
 
  h1 {
@@ -28,9 +31,19 @@
      margin-bottom: 40px;
      color: #fff;
  }
- 
+ .form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ }
  .form-group {
      margin-bottom: 20px;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
  }
  
  .form-label {
