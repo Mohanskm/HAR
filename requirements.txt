@@ -4,5 +4,10 @@ seaborn
 matplotlib
 scikit-learn
 Flask
+<<<<<<< HEAD
 dill
 # -e .
+=======
+gunicorn
+# -e .
+>>>>>>> ab6905ebc0ada739e5ac692db06a4ea2bad28ada
