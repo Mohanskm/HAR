@@ -36,17 +36,17 @@
         {% endif %}
         <div class="img-container">
         {% if results == "Standing" %}
-            <img class="backgroundimage" src= "url('{{ url_for('static', filename='images/standing.jpeg') }}')" alt = "imaf"/>
+            <img class="backgroundimage" src= "{{ url_for('static', filename='images/standing.jpeg') }}" alt = "imaf"/>
         {% elif results == "Sitting" %}
-            <img class="backgroundimage" src= "url('{{ url_for('static', filename='images/sitting.jpeg') }}')" alt = "imaf"/>
+            <img class="backgroundimage" src= "{{ url_for('static', filename='images/sitting.jpeg') }}" alt = "imaf"/>
         {% elif results == "Laying" %}
-            <img class="backgroundimage" src= "url('{{ url_for('static', filename='images/laying.jpeg') }}')" alt = "imaf"/>
+            <img class="backgroundimage" src= "{{ url_for('static', filename='images/laying.jpeg') }}" alt = "imaf"/>
         {% elif results == "Walking_downstairs" %}
-            <img class="backgroundimage" src= "url('{{ url_for('static', filename='images/walking_downstairs.jpg') }}')" alt = "imaf"/>
+            <img class="backgroundimage" src= "{{ url_for('static', filename='images/walking_downstairs.jpg') }}" alt = "imaf"/>
         {% elif results == "Walking_upstairs" %}
-            <img class="backgroundimage" src= "url('{{ url_for('static', filename='images/walking_upstairs.jpg') }}')" alt = "imaf"/>
+            <img class="backgroundimage" src= "{{ url_for('static', filename='images/walking_upstairs.jpg') }}" alt = "imaf"/>
         {% elif results == "walking" %}
-            <img class="backgroundimage" src= "url('{{ url_for('static', filename='images/walking.jpg') }}')" alt = "imaf"/>
+            <img class="backgroundimage" src= "{{ url_for('static', filename='images/walking.jpg') }}" alt = "imaf"/>
         {% endif %}
     </div>
 
