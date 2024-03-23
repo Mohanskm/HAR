@@ -36,11 +36,11 @@
         {% endif %}
         <div class="img-container">
         {% if results == "Standing" %}
-            <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/standing.jpeg') }}');"></div>
+            <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/sitting.jpeg') }}');"></div>
         {% elif results == "Sitting" %}
             <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/sitting.jpeg') }}');"></div>
         {% elif results == "Laying" %}
-            <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/laying.jpeg') }}');"></div>
+            <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/laying.jpeg') }}'); height:170px; width:250px"></div>
         {% elif results == "Walking_downstairs" %}
             <div class="backgroundimage" style="background: url('{{ url_for('static', filename='images/walking_downstairs.jpg') }}');"></div>
         {% elif results == "Walking_upstairs" %}
