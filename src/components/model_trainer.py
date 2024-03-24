@@ -9,6 +9,7 @@ from sklearn.exceptions import ConvergenceWarning
 # Ignore ConvergenceWarning
 warnings.filterwarnings("ignore", category = ConvergenceWarning)
 
+from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score
@@ -37,9 +38,11 @@ class ModelTrainer:
                 test_array[:,-1]
             )
             models = {
-                "Random_Forest": RandomForestClassifier(),
-                "Logistic": LogisticRegression(),
-            }
+    "Random_Forest": RandomForestClassifier(),
+    "Logistic": LogisticRegression(),
+    "SVM": SVC()
+}
+
             params = {
     "Random_Forest": {
         "min_samples_split": [2, 5, 10],
@@ -47,6 +50,10 @@ class ModelTrainer:
     },
     "Logistic": {
         "C": [0.001, 0.01, 0.1],
+    },
+    "SVM": {
+        "C": [0.1, 1, 10],
+        "kernel": ['linear', 'poly']
     }
 }
 
