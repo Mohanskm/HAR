@@ -1,9 +1,10 @@
+python==3.8
+Flask==3.0.2
 pandas
 numpy
 seaborn
 matplotlib
 scikit-learn
-Flask
 dill
 gunicorn
 # -e .
