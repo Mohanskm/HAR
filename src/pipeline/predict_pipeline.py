@@ -85,11 +85,11 @@ class PredictPipeline:
             predictions_df = pd.DataFrame(predictions, columns=['Predictions'])
             output_df = pd.concat([data_frame, predictions_df], axis=1)
             # Convert DataFrame to CSV string
-            csv_string = output_df.to_csv(index=False)
-             # Save the CSV string to a file
-            csv_filename = 'predictions.csv'
-            with open(csv_filename, 'w') as csv_file:
-                csv_file.write(csv_string)
+            # csv_string = output_df.to_csv(index=False)
+            #  # Save the CSV string to a file
+            # csv_filename = 'predictions.csv'
+            # with open(csv_filename, 'w') as csv_file:
+            #     csv_file.write(csv_string)
             # Save the image of the pie chart
             image = custom_data.plot_pie_chart(predictions)
             # image_filename = 'pie_chart.png'
