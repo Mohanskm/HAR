@@ -9,16 +9,6 @@ body {
 }
 
  
-@keyframes pulse {
-     0% {
-         opacity: 1;
-     }
-     100% {
-         transform: scale(10);
-         opacity: 0;
-     }
-}
- 
 .container {
      width: 100%;
      height: 100%;
@@ -34,25 +24,32 @@ body {
      opacity: 0; /* Initially set opacity to 0 */
      animation: fadeInContainer 0.5s ease forwards; /* Apply fadeInContainer animation */
 }
- 
-@keyframes fadeInContainer {
-     100% {
-         opacity: 1; /* When animation completes, set opacity to 1 */
-     }
+.sub-container{
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
 }
  
+
+ 
 h1 {
+
      margin: 0;
      margin-bottom: 20px;
+     text-align: start;
      color: #fbfafa;
-     width: 100%;
      font-size: 48px;
+     padding: 20px;
      opacity: 0; /* Initially set opacity to 0 */
      animation: fadeInH1 0.5s ease 0.3s forwards; /* Apply fadeInH1 animation with delay */
+     border: 1px solid #fbfafa;
+     border-radius: 5px;
 }
 h1 span {
      opacity: 0;
      animation: fadeIn 1s ease forwards;
+     margin-bottom: 20px;
 }
  
  
@@ -63,7 +60,8 @@ h1 span {
 }
  
 p {
-     margin-bottom: 20px;
+     margin-bottom: 10px;
+     text-align: center;
      color: #d1cfcf;
      font-size: 24px;
      font-weight: 500;
@@ -81,21 +79,37 @@ p:nth-child(2) {
 p:nth-child(3) {
      animation: fadeInText 0.5s ease 2.5s forwards; /* Apply fadeInText animation with delay */
 }
- 
 p:nth-child(4) {
      animation: fadeInText 0.5s ease 3s forwards; /* Apply fadeInText animation with delay */
 }
- 
-p:nth-child(5) {
-     animation: fadeInText 0.5s ease 3.5s forwards; /* Apply fadeInText animation with delay */
-}
-p:nth-child(6) {
-     animation: fadeInText 0.5s ease 4s forwards; /* Apply fadeInText animation with delay */
-}
-p:nth-child(7) {
-     animation: fadeInText 0.5s ease 4.5s forwards; /* Apply fadeInText animation with delay */
+.card-container button{
+     animation: fadeInContainer 0.5s ease 4s forwards; /* Apply fadeInText animation with delay */
 }
  
+
+.card-container{
+     margin-top: 40px;
+     display: flex;
+     width: 100%;
+     justify-content: space-around;
+}
+.card  {
+     all: unset;
+     border-radius: 10px;
+     padding: 15px 30px; /* Adjust padding to increase button size */
+     background-color: #127bec; /* Lighter background color */
+     color: #333; /* Darker text color */
+     font-size: 16px; /* Adjust font size as needed */
+     cursor: pointer;
+     opacity: 0;
+     box-shadow: 0 0 10px rgba(255,255, 255, 0.3); /* Initial shadow */
+     transition: box-shadow 0.3s, opacity 0.3s; /* Transition for box-shadow and opacity */
+ }
+ 
+ .card:hover {
+     box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); /* Increased intensity on hover */
+     opacity: 1;
+ }
 a {
      color: #007bff;
      text-decoration: none;
@@ -114,6 +128,11 @@ a:hover {
      }
 }
  
+@keyframes fadeInContainer {
+     100% {
+         opacity: 1; /* When animation completes, set opacity to 1 */
+     }
+}
 
 
 /* do not touch it */

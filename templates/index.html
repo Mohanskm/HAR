@@ -4,26 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Activity Recognition</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
     
     
     <div class="container">
-        <h1>
-            <span>Welcome</span>
-            <span>to</span>
-            <span>"SensorSavvy:</span>
-            <span>Envisioning </span>
-            <span>Human </span>
-            <span>Activity!"</span>
-        </h1>
-        <p>Welcome to "SensorSavvy: Envisioning Human Activity!"</p>
-    <p>Embark on a journey to decode human behavior through sensor data!</p>
-    <p>Our cutting-edge project employs state-of-the-art machine learning marvels to predict human activities.</p>
-    <p>Supported activities include: Standing, Sitting, Laying, Walking Downstairs, Walking Upstairs, and Walking.</p>
-    <p>Ready to unravel the mysteries? Click <a href="/predictdata">here</a> to predict a single data point of human activity.</p>
-    <p>Or elevate your exploration! Click <a href="/predict_and_save">here</a> to predict, save, and visualize multiple data points.</p>
+        <div class="sub-container">
+            <h1>
+                <span>Welcome</span>
+                <span>to</span>
+                <span>SensorSavvy</span>
+                <span>Envisioning </span>
+                <span>Human </span>
+                <span>Activity</span>
+            </h1>
+            <p>Embark on a journey to decode human behavior through sensor data!</p>
+            <p>Our cutting-edge project employs state-of-the-art machine learning marvels to predict human activities.</p>
+            <p>Supported activities include: Standing, Sitting, Laying, Walking Downstairs, Walking Upstairs, and Walking.</p>
+            <div class="card-container">
+                <button class="card">
+                    <p>To predict a single data point <br> of human activity.</p>
+                </button>
+
+                <button class="card">
+                    <p> To predict, save, and <br> visualize multiple data points.</p>
+                </button>
+            </div>
+        </div>
     </div>
     <div id="particles-js"></div>
 
