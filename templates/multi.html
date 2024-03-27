@@ -25,8 +25,8 @@
                 </div>
             {% endif %}
             {% if pie_chart %}
-                <div class="pie-chart">
-                    <img src="{{ pie_chart }}" alt="Predicted Activity Distribution">
+                <div class="img-container">
+                    <img class="backgroundimage" src= "{{ url_for('static', filename='images/pie_chart.png') }}" alt="Predicted Activity Distribution">
                 </div>
             {% endif %}
         </div>

@@ -1,10 +1,10 @@
+Flask
 pandas
 numpy
 seaborn
 matplotlib
 scikit-learn
-Flask
 dill
 gunicorn
-# -e .
+-e .
 
