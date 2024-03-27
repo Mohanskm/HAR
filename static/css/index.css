@@ -40,10 +40,11 @@ h1 {
      text-align: start;
      color: #fbfafa;
      font-size: 48px;
+     background-color: #127bec;
      padding: 20px;
      opacity: 0; /* Initially set opacity to 0 */
      animation: fadeInH1 0.5s ease 0.3s forwards; /* Apply fadeInH1 animation with delay */
-     border: 1px solid #fbfafa;
+     border: 5px solid #fbfafa;
      border-radius: 5px;
 }
 h1 span {
@@ -82,7 +83,7 @@ p:nth-child(3) {
 p:nth-child(4) {
      animation: fadeInText 0.5s ease 3s forwards; /* Apply fadeInText animation with delay */
 }
-.card-container button{
+.card-container a{
      animation: fadeInContainer 0.5s ease 4s forwards; /* Apply fadeInText animation with delay */
 }
  
@@ -102,6 +103,7 @@ p:nth-child(4) {
      font-size: 16px; /* Adjust font size as needed */
      cursor: pointer;
      opacity: 0;
+     border: 5px solid #fbfafa;
      box-shadow: 0 0 10px rgba(255,255, 255, 0.3); /* Initial shadow */
      transition: box-shadow 0.3s, opacity 0.3s; /* Transition for box-shadow and opacity */
  }
