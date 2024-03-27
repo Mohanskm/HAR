@@ -9,6 +9,19 @@
      background-color: #1d1d1d;
      border-radius: 10px;
  }
+
+ .img-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    height: 200px;
+    width: 200px;
+}
+.backgroundimage {
+        object-fit: contain;
+        height: 100%;
+        border-radius: 5px;
+}
  
  h1 {
      font-size: 48px;

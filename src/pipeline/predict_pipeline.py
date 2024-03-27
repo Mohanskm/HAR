@@ -79,6 +79,7 @@ class PredictPipeline:
 
     def predict_and_save(self, csv_file_path):
         try:
+            output_path="static/images"
             custom_data = CustomData(csv_file_path)
             data_frame = custom_data.get_data_as_data_frame()
             predictions = self.predict(data_frame)
@@ -91,11 +92,14 @@ class PredictPipeline:
             with open(csv_filename, 'w') as csv_file:
                 csv_file.write(csv_string)
             # Save the image of the pie chart
-            image = custom_data.plot_pie_chart(predictions)
-            # image_filename = 'pie_chart.png'
+            path = custom_data.plot_pie_chart(predictions)
+            # Save the plot to an image file
+            # image_filename = os.path.join(output_path, 'pie_chart.png')
+            # # plt.savefig(image_filename)
+            # # image_filename = 'pie_chart.png'
             # image.save(image_filename)
             # Return the CSV string and predictions for handling in the route
-            return image
+            return path
         except Exception as e:
             raise CustomException(e, sys)
 
@@ -113,23 +117,26 @@ class CustomData:
         except Exception as e:
             raise CustomException(e, sys)
     
-    def plot_pie_chart(self, y_pred_labels):
+    def plot_pie_chart(self, y_pred_labels, save_path=None):
         label_counts = pd.Series(y_pred_labels).value_counts()
         plt.figure(figsize=(6, 6))
         plt.pie(label_counts, labels=label_counts.index, autopct='%1.1f%%', startangle=140)
         plt.title('Predicted Activity Distribution')
         plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
         
+        default_save_path = "static/images/pie_chart.png"
+        plt.savefig(default_save_path, format='png')
+        return default_save_path
         # Save the plot to an image buffer
-        img_buffer = io.BytesIO()
-        plt.savefig(img_buffer, format='png')
-        plt.close()  # Close the figure to release memory
+        # img_buffer = io.BytesIO()
+        # plt.savefig(img_buffer, format='png')
+        # plt.close()  # Close the figure to release memory
         
-        # Create a PIL image object from the byte buffer
-        img_buffer.seek(0)
-        pil_image = Image.open(img_buffer)
-        pie = pil_image.show()
-        return pie
+        # # Create a PIL image object from the byte buffer
+        # img_buffer.seek(0)
+        # pil_image = Image.open(img_buffer)
+        # pie = pil_image.show()
+        # return pie
         # # Save the plot to an image file
         # img_file = 'pie_chart.png'
         # plt.savefig(img_file)
